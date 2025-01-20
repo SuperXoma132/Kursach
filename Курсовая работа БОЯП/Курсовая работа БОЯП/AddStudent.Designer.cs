@@ -28,12 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "AddStudent";
+            Назад = new Button();
+            SuspendLayout();
+            // 
+            // Назад
+            // 
+            Назад.Location = new Point(713, 415);
+            Назад.Name = "Назад";
+            Назад.Size = new Size(75, 23);
+            Назад.TabIndex = 1;
+            Назад.Text = "Назад";
+            Назад.UseVisualStyleBackColor = true;
+            Назад.Click += Назад_Click;
+            // 
+            // AddStudent
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(Назад);
+            Name = "AddStudent";
+            Text = "AddStudent";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button Назад;
     }
 }

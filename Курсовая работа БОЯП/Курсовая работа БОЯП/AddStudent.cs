@@ -16,5 +16,10 @@ namespace Курсовая_работа_БОЯП
         {
             InitializeComponent();
         }
+
+        private void Назад_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

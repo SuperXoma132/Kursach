@@ -15,6 +15,7 @@ namespace Курсовая_работа_БОЯП
         public MainPage()
         {
             InitializeComponent();
+            this.FormClosed += (object s, FormClosedEventArgs ev) => Application.Exit();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -24,7 +25,9 @@ namespace Курсовая_работа_БОЯП
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            AddStudent addStudent = new AddStudent();
+            addStudent.TopLevel = true;
+            addStudent.Show();
         }
     }
 }

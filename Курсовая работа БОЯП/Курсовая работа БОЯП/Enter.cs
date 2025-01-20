@@ -7,6 +7,7 @@ namespace Курсовая_работа_БОЯП
         public Enter()
         {
             InitializeComponent();
+            this.FormClosed += (object s, FormClosedEventArgs ev) => Application.Exit();
         }
 
         private void button2_Click(object sender, EventArgs e) // кнопка авторизации
@@ -18,9 +19,6 @@ namespace Курсовая_работа_БОЯП
             auth.Show();
             auth.FormClosed += (object s, FormClosedEventArgs ev) => this.Show();
         }
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
+        
     }
 }
