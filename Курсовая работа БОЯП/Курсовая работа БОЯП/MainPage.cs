@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Курсовая_работа_БОЯП
 {
@@ -15,7 +16,6 @@ namespace Курсовая_работа_БОЯП
         public MainPage()
         {
             InitializeComponent();
-            this.FormClosed += (object s, FormClosedEventArgs ev) => Application.Exit();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,6 +28,34 @@ namespace Курсовая_работа_БОЯП
             AddStudent addStudent = new AddStudent();
             addStudent.TopLevel = true;
             addStudent.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            StudentsList studentsList = new StudentsList();
+            studentsList.TopLevel = true;
+            studentsList.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Sorting sorting = new Sorting();
+            sorting.TopLevel = true;
+            sorting.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            UsersList usersList = new UsersList();
+            usersList.TopLevel = true;
+            usersList.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            UsersChange usersChange = new UsersChange();
+            usersChange.TopLevel = true;
+            usersChange.Show();
         }
     }
 }

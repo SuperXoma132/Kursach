@@ -16,5 +16,20 @@ namespace Курсовая_работа_БОЯП
         {
             InitializeComponent();
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MainPage mainPage = new MainPage();
+            this.Hide();
+            mainPage.TopLevel = true;
+            mainPage.Show();
+            mainPage.FormClosed += (object s, FormClosedEventArgs ev) => this.Close();
+        }
+
+        
     }
 }

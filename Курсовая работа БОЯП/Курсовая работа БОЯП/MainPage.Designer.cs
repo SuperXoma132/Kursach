@@ -33,11 +33,12 @@
             button3 = new Button();
             button4 = new Button();
             button5 = new Button();
+            button7 = new Button();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(333, 382);
+            button1.Location = new Point(333, 358);
             button1.Name = "button1";
             button1.Size = new Size(134, 56);
             button1.TabIndex = 0;
@@ -53,6 +54,7 @@
             button2.TabIndex = 1;
             button2.Text = "Просмотр списка группы";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -62,6 +64,7 @@
             button3.TabIndex = 2;
             button3.Text = "Отбор данных";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
@@ -81,18 +84,30 @@
             button5.TabIndex = 4;
             button5.Text = "Просмотр списка пользователей";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
-            // Form4
+            // button7
+            // 
+            button7.Location = new Point(333, 296);
+            button7.Name = "button7";
+            button7.Size = new Size(134, 56);
+            button7.TabIndex = 6;
+            button7.Text = "Взаимодействие с пользователями";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
+            // 
+            // MainPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button7);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
-            Name = "Form4";
+            Name = "MainPage";
             Text = "Form4";
             ResumeLayout(false);
         }
@@ -104,5 +119,6 @@
         private Button button3;
         private Button button4;
         private Button button5;
+        private Button button7;
     }
 }

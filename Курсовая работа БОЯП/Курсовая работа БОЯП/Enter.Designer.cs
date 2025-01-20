@@ -40,6 +40,7 @@
             button1.TabIndex = 0;
             button1.Text = "Регистрация";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -51,14 +52,14 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // Form1
+            // Enter
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(button2);
             Controls.Add(button1);
-            Name = "Form1";
+            Name = "Enter";
             Text = "Form1";
             ResumeLayout(false);
         }
