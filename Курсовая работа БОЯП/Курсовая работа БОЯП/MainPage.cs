@@ -15,7 +15,7 @@ namespace Курсовая_работа_БОЯП
         public MainPage(string login, string role)
         {
             InitializeComponent();
-            this.Text = $"Корнеев Александр ЭПИ-211, Логин: {login}, Роль: {role}";
+            this.Text = $"Корнеев Александр Александрович ЭПИ-211, Логин: {login}, Роль: {role}";
         }
 
         private void MainPage_Load(object sender, EventArgs e)
@@ -28,20 +28,36 @@ namespace Курсовая_работа_БОЯП
                 SortingButton.Visible = false;
                 UsersListButton.Enabled = false;
                 UsersListButton.Visible = false;
-                UsersChangeButton.Enabled = false;
-                UsersChangeButton.Visible = false;
+                StudentsListAdmin.Enabled = false;
+                StudentsListAdmin.Visible = false;
             }
             else if (CurrentUserData.UserRole == "Пользователь")
             {
                 UsersListButton.Enabled = false;
                 UsersListButton.Visible = false;
-                UsersChangeButton.Enabled = false;
-                UsersChangeButton.Visible = false;
+                StudentsListAdmin.Enabled = false;
+                StudentsListAdmin.Visible = false;
             }
             else if (CurrentUserData.UserRole == "Администратор")
             {
                 //можно всё
             }
+        }
+
+        private void StudentsListButton_Click(object sender, EventArgs e)
+        {
+            StudentsList studentsList = new StudentsList();
+            studentsList.ShowDialog();
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void StudentsListAdmin_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

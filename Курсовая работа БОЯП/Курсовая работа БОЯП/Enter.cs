@@ -23,7 +23,7 @@ namespace Курсовая_работа_БОЯП
         private void Enter_Load(object sender, EventArgs e)
         {
             //подключение к серверу
-            sqlConnection1 = new SqlConnection(@"Server = (localdb)\MSSQLLocalDB; Database = usersdb; Trusted_Connection = True;");
+            sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
             sqlConnection1.Open();
             //добавление студентов
             SqlCommand command1 = new SqlCommand("INSERT INTO Students (FirstName, LastName, MiddleName, Birthday, Sex, Id, EducationCost, CreditsCount, Note) VALUES (N'Корнеев', N'Александр', N'Александрович', N'2005-09-06', N'Мужской', 11, N'Бюджетная основа', 4, N'-')", sqlConnection1);
