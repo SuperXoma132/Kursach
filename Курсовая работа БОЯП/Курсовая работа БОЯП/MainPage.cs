@@ -13,9 +13,10 @@ namespace Курсовая_работа_БОЯП
 {
     public partial class MainPage : Form
     {
-        public MainPage()
+        public MainPage(string login, string role)
         {
             InitializeComponent();
+            this.Text = $"Корнеев Александр ЭПИ-211, Логин: {login}, Роль: {role}";
         }
 
         private void button1_Click(object sender, EventArgs e)
