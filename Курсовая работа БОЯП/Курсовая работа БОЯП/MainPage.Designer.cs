@@ -28,97 +28,92 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button7 = new Button();
+            CloseButton = new Button();
+            StudentsListButton = new Button();
+            SortingButton = new Button();
+            AddStudentButton = new Button();
+            UsersListButton = new Button();
+            UsersChangeButton = new Button();
             SuspendLayout();
             // 
-            // button1
+            // CloseButton
             // 
-            button1.Location = new Point(333, 358);
-            button1.Name = "button1";
-            button1.Size = new Size(134, 56);
-            button1.TabIndex = 0;
-            button1.Text = "На окно входа";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            CloseButton.Location = new Point(333, 358);
+            CloseButton.Name = "CloseButton";
+            CloseButton.Size = new Size(134, 56);
+            CloseButton.TabIndex = 0;
+            CloseButton.Text = "На окно входа";
+            CloseButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // StudentsListButton
             // 
-            button2.Location = new Point(333, 110);
-            button2.Name = "button2";
-            button2.Size = new Size(134, 56);
-            button2.TabIndex = 1;
-            button2.Text = "Просмотр списка группы";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            StudentsListButton.Location = new Point(333, 110);
+            StudentsListButton.Name = "StudentsListButton";
+            StudentsListButton.Size = new Size(134, 56);
+            StudentsListButton.TabIndex = 1;
+            StudentsListButton.Text = "Просмотр списка группы";
+            StudentsListButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // SortingButton
             // 
-            button3.Location = new Point(333, 172);
-            button3.Name = "button3";
-            button3.Size = new Size(134, 56);
-            button3.TabIndex = 2;
-            button3.Text = "Отбор данных";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            SortingButton.Location = new Point(333, 172);
+            SortingButton.Name = "SortingButton";
+            SortingButton.Size = new Size(134, 56);
+            SortingButton.TabIndex = 2;
+            SortingButton.Text = "Отбор данных";
+            SortingButton.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // AddStudentButton
             // 
-            button4.Location = new Point(333, 48);
-            button4.Name = "button4";
-            button4.Size = new Size(134, 56);
-            button4.TabIndex = 3;
-            button4.Text = "Добавление студента";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            AddStudentButton.Location = new Point(333, 48);
+            AddStudentButton.Name = "AddStudentButton";
+            AddStudentButton.Size = new Size(134, 56);
+            AddStudentButton.TabIndex = 3;
+            AddStudentButton.Text = "Добавление студента";
+            AddStudentButton.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // UsersListButton
             // 
-            button5.Location = new Point(333, 234);
-            button5.Name = "button5";
-            button5.Size = new Size(134, 56);
-            button5.TabIndex = 4;
-            button5.Text = "Просмотр списка пользователей";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
+            UsersListButton.Location = new Point(333, 234);
+            UsersListButton.Name = "UsersListButton";
+            UsersListButton.Size = new Size(134, 56);
+            UsersListButton.TabIndex = 4;
+            UsersListButton.Text = "Просмотр списка пользователей";
+            UsersListButton.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // UsersChangeButton
             // 
-            button7.Location = new Point(333, 296);
-            button7.Name = "button7";
-            button7.Size = new Size(134, 56);
-            button7.TabIndex = 6;
-            button7.Text = "Взаимодействие с пользователями";
-            button7.UseVisualStyleBackColor = true;
-            button7.Click += button7_Click;
+            UsersChangeButton.Location = new Point(333, 296);
+            UsersChangeButton.Name = "UsersChangeButton";
+            UsersChangeButton.Size = new Size(134, 56);
+            UsersChangeButton.TabIndex = 6;
+            UsersChangeButton.Text = "Взаимодействие с пользователями";
+            UsersChangeButton.UseVisualStyleBackColor = true;
             // 
             // MainPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button7);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(UsersChangeButton);
+            Controls.Add(UsersListButton);
+            Controls.Add(AddStudentButton);
+            Controls.Add(SortingButton);
+            Controls.Add(StudentsListButton);
+            Controls.Add(CloseButton);
             Name = "MainPage";
             Text = "Form4";
+            Load += MainPage_Load;
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
-        private Button button7;
+        private Button CloseButton;
+        private Button StudentsListButton;
+        private Button SortingButton;
+        private Button AddStudentButton;
+        private Button UsersListButton;
+        private Button UsersChangeButton;
     }
 }
