@@ -5,10 +5,12 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Курсовая_работа_БОЯП
 {
@@ -61,20 +63,28 @@ namespace Курсовая_работа_БОЯП
             sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
             sqlConnection1.Open();
             int number;
-            if (!(Login.Text.IsNullOrEmpty() || Password.Text.IsNullOrEmpty()) && (Role.Text == "Администратор" || Role.Text == "Пользователь" || Role.Text == "Гость"))
+            if (!(new Regex(@"[A-Z]+").IsMatch(Password.Text)) || !(new Regex(@".{6,30}").IsMatch(Password.Text)) || !(new Regex(@"[0-9]+")).IsMatch(Password.Text) ||
+                        !(new Regex(@"[!@#$%^]").IsMatch(Password.Text)))
             {
-                sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
-                sqlConnection1.Open();
-                SqlCommand updateTable = new SqlCommand($"UPDATE Users SET " +
-                    $"Login = N'{Login.Text}', " +
-                    $"Password = N'{Password.Text}', " +
-                    $"Role = N'{Role.Text}' " +
-                    $"WHERE Id = N'{id_checker.Text}'", sqlConnection1);
-                updateTable.ExecuteNonQuery();
+                MessageBox.Show("Пароль не соответствует требованиям");
             }
-            else
+            else 
             {
-                MessageBox.Show("Заполните все поля корректно");
+                if (!(Login.Text.IsNullOrEmpty() || Password.Text.IsNullOrEmpty()) && (Role.Text == "Администратор" || Role.Text == "Пользователь" || Role.Text == "Гость"))
+                {
+                    sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
+                    sqlConnection1.Open();
+                    SqlCommand updateTable = new SqlCommand($"UPDATE Users SET " +
+                        $"Login = N'{Login.Text}', " +
+                        $"Password = N'{Password.Text}', " +
+                        $"Role = N'{Role.Text}' " +
+                        $"WHERE Id = N'{id_checker.Text}'", sqlConnection1);
+                    updateTable.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("Заполните все поля корректно");
+                }
             }
         }
 

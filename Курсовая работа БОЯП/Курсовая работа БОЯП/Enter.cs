@@ -106,17 +106,25 @@ namespace Курсовая_работа_БОЯП
                 object goodUsersCount = goodUsersCountCommand.ExecuteScalar();
                 if (Convert.ToInt32(goodUsersCount.ToString()) == 0)
                 {
-                    SqlCommand getIdFromDB = new SqlCommand($"SELECT COUNT(*) FROM Users", sqlConnection1);
-                    string id = (Convert.ToInt32(getIdFromDB.ExecuteScalar()) + 1).ToString();
-                    SqlCommand addUserToDB = new SqlCommand($"INSERT INTO Users (Id, Login, Password, Role) VALUES (N'{id}', N'{textBox3.Text}', N'{textBox4.Text}', N'Гость')", sqlConnection1);
-                    addUserToDB.ExecuteNonQuery();
-                    CurrentUserData.UserId = id;
-                    CurrentUserData.UserRole = "Гость";
-                    CurrentUserData.UserLogin = textBox3.Text.Trim();
-                    MainPage mainPage = new MainPage(CurrentUserData.UserLogin, CurrentUserData.UserRole);
-                    this.Hide();
-                    mainPage.Show();
-                    mainPage.FormClosed += (object s, FormClosedEventArgs ev) => this.Show();
+                    if (!(new Regex(@"[A-Z]+").IsMatch(textBox4.Text)) || !(new Regex(@".{6,30}").IsMatch(textBox4.Text)) || !(new Regex(@"[0-9]+")).IsMatch(textBox4.Text) ||
+                        !(new Regex(@"[!@#$%^]").IsMatch(textBox4.Text)))
+                    {
+                        MessageBox.Show("Пароль не соответствует требованиям");
+                    }
+                    else
+                    {
+                        SqlCommand getIdFromDB = new SqlCommand($"SELECT COUNT(*) FROM Users", sqlConnection1);
+                        string id = (Convert.ToInt32(getIdFromDB.ExecuteScalar()) + 1).ToString();
+                        SqlCommand addUserToDB = new SqlCommand($"INSERT INTO Users (Id, Login, Password, Role) VALUES (N'{id}', N'{textBox3.Text}', N'{textBox4.Text}', N'Гость')", sqlConnection1);
+                        addUserToDB.ExecuteNonQuery();
+                        CurrentUserData.UserId = id;
+                        CurrentUserData.UserRole = "Гость";
+                        CurrentUserData.UserLogin = textBox3.Text.Trim();
+                        MainPage mainPage = new MainPage(CurrentUserData.UserLogin, CurrentUserData.UserRole);
+                        this.Hide();
+                        mainPage.Show();
+                        mainPage.FormClosed += (object s, FormClosedEventArgs ev) => this.Show();
+                    }
                 }
                 else
                 {
