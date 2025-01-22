@@ -71,7 +71,6 @@ namespace Курсовая_работа_БОЯП
             Sex.Items.Add("Женский");
             EducationCost.Items.Add("Бюджетная основа");
             EducationCost.Items.Add("Платная основа");
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -81,8 +80,8 @@ namespace Курсовая_работа_БОЯП
             int number;
             if (!(Firstname.Text.IsNullOrEmpty() || LastName.Text.IsNullOrEmpty() || MiddleName.Text.IsNullOrEmpty() ||
                 Sex.Text.IsNullOrEmpty() || ID.Text.IsNullOrEmpty() || EducationCost.Text.IsNullOrEmpty() || CreditsCount.Text.IsNullOrEmpty()) &&
-                (int.TryParse(CreditsCount.Text, out number) && (EducationCost.Text == "Бюджетная основа" || EducationCost.Text == "Платная основа")
-                && (Sex.Text == "Женский" || Sex.Text == "Мужской") && dateTimePicker1.Value.Year < 2025))
+                (ID.Text.All(char.IsDigit) && (EducationCost.Text == "Бюджетная основа" || EducationCost.Text == "Платная основа")
+                && (Sex.Text == "Женский" || Sex.Text == "Мужской") && dateTimePicker1.Value.Year < 2025 && CreditsCount.Text.All(char.IsDigit)))
             {
                     sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
                     sqlConnection1.Open();
