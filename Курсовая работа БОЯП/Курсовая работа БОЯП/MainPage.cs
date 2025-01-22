@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Курсовая_работа_БОЯП
 {
@@ -16,47 +15,67 @@ namespace Курсовая_работа_БОЯП
         public MainPage(string login, string role)
         {
             InitializeComponent();
-            this.Text = $"Корнеев Александр ЭПИ-211, Логин: {login}, Роль: {role}";
+            this.Text = $"Корнеев Александр Александрович ЭПИ-211, Логин: {login}, Роль: {role}";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void MainPage_Load(object sender, EventArgs e)
+        {
+            if (CurrentUserData.UserRole == "Гость")
+            {
+                AddStudentButton.Enabled = false;
+                AddStudentButton.Visible = false;
+                SortingButton.Enabled = false;
+                SortingButton.Visible = false;
+                UsersListButton.Enabled = false;
+                UsersListButton.Visible = false;
+                StudentsListAdmin.Enabled = false;
+                StudentsListAdmin.Visible = false;
+            }
+            else if (CurrentUserData.UserRole == "Пользователь")
+            {
+                UsersListButton.Enabled = false;
+                UsersListButton.Visible = false;
+                StudentsListAdmin.Enabled = false;
+                StudentsListAdmin.Visible = false;
+            }
+            else if (CurrentUserData.UserRole == "Администратор")
+            {
+                //можно всё
+            }
+        }
+
+        private void StudentsListButton_Click(object sender, EventArgs e)
+        {
+            StudentsList studentsList = new StudentsList();
+            studentsList.Show();
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void StudentsListAdmin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddStudentButton_Click(object sender, EventArgs e)
         {
             AddStudent addStudent = new AddStudent();
-            addStudent.TopLevel = true;
             addStudent.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            StudentsList studentsList = new StudentsList();
-            studentsList.TopLevel = true;
-            studentsList.Show();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void SortingButton_Click(object sender, EventArgs e)
         {
             Sorting sorting = new Sorting();
-            sorting.TopLevel = true;
             sorting.Show();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void UsersListButton_Click(object sender, EventArgs e)
         {
             UsersList usersList = new UsersList();
-            usersList.TopLevel = true;
             usersList.Show();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            UsersChange usersChange = new UsersChange();
-            usersChange.TopLevel = true;
-            usersChange.Show();
         }
     }
 }

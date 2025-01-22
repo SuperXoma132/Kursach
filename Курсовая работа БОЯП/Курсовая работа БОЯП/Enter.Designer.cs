@@ -177,7 +177,7 @@
             ClientSize = new Size(410, 440);
             Controls.Add(tabControl1);
             Name = "Enter";
-            Text = "Form1";
+            Text = "Welcome";
             FormClosing += Enter_FormClosing;
             Load += Enter_Load;
             tabControl1.ResumeLayout(false);
