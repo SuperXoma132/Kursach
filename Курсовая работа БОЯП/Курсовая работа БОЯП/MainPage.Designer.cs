@@ -64,6 +64,7 @@
             SortingButton.TabIndex = 2;
             SortingButton.Text = "Отбор данных";
             SortingButton.UseVisualStyleBackColor = true;
+            SortingButton.Click += SortingButton_Click;
             // 
             // AddStudentButton
             // 
@@ -83,6 +84,7 @@
             UsersListButton.TabIndex = 4;
             UsersListButton.Text = "Просмотр списка пользователей";
             UsersListButton.UseVisualStyleBackColor = true;
+            UsersListButton.Click += UsersListButton_Click;
             // 
             // StudentsListAdmin
             // 

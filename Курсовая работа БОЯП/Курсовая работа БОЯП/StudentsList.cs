@@ -41,6 +41,10 @@ namespace Курсовая_работа_БОЯП
             dataGridView1.Columns[7].HeaderText = "Долги";
             dataGridView1.Columns[8].HeaderText = "Примечания";
             sqlConnection1.Close();
+            if (CurrentUserData.UserRole == "Администратор")
+            {
+                button3.Enabled = true;
+            }
 
         }
 

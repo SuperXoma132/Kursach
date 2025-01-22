@@ -65,5 +65,17 @@ namespace Курсовая_работа_БОЯП
             AddStudent addStudent = new AddStudent();
             addStudent.Show();
         }
+
+        private void SortingButton_Click(object sender, EventArgs e)
+        {
+            Sorting sorting = new Sorting();
+            sorting.Show();
+        }
+
+        private void UsersListButton_Click(object sender, EventArgs e)
+        {
+            UsersList usersList = new UsersList();
+            usersList.Show();
+        }
     }
 }
