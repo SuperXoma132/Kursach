@@ -33,7 +33,6 @@
             SortingButton = new Button();
             AddStudentButton = new Button();
             UsersListButton = new Button();
-            StudentsListAdmin = new Button();
             SuspendLayout();
             // 
             // CloseButton
@@ -86,22 +85,11 @@
             UsersListButton.UseVisualStyleBackColor = true;
             UsersListButton.Click += UsersListButton_Click;
             // 
-            // StudentsListAdmin
-            // 
-            StudentsListAdmin.Location = new Point(333, 297);
-            StudentsListAdmin.Name = "StudentsListAdmin";
-            StudentsListAdmin.Size = new Size(134, 56);
-            StudentsListAdmin.TabIndex = 5;
-            StudentsListAdmin.Text = "Редактирование списка группы";
-            StudentsListAdmin.UseVisualStyleBackColor = true;
-            StudentsListAdmin.Click += StudentsListAdmin_Click;
-            // 
             // MainPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(StudentsListAdmin);
             Controls.Add(UsersListButton);
             Controls.Add(AddStudentButton);
             Controls.Add(SortingButton);
@@ -120,6 +108,5 @@
         private Button SortingButton;
         private Button AddStudentButton;
         private Button UsersListButton;
-        private Button StudentsListAdmin;
     }
 }

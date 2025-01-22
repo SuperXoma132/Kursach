@@ -11,19 +11,13 @@ using Microsoft.Data.SqlClient;
 
 namespace Курсовая_работа_БОЯП
 {
-    public partial class Sorting : Form
+    public partial class Sorting : Form //мужской пол, номер студенческого по возрастанию
     {
         private SqlConnection sqlConnection1 = null;
         public Sorting()
         {
             InitializeComponent();
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void Sorting_Load(object sender, EventArgs e)
         {
             this.Text = $" Корнеев Александр Александрович, Логин: {CurrentUserData.UserLogin}, Роль: {CurrentUserData.UserRole}, Список группы";
@@ -46,7 +40,6 @@ namespace Курсовая_работа_БОЯП
             dataGridView1.Columns[8].HeaderText = "Примечания";
             sqlConnection1.Close();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
