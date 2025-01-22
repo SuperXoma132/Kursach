@@ -28,15 +28,11 @@ namespace Курсовая_работа_БОЯП
                 SortingButton.Visible = false;
                 UsersListButton.Enabled = false;
                 UsersListButton.Visible = false;
-                StudentsListAdmin.Enabled = false;
-                StudentsListAdmin.Visible = false;
             }
             else if (CurrentUserData.UserRole == "Пользователь")
             {
                 UsersListButton.Enabled = false;
                 UsersListButton.Visible = false;
-                StudentsListAdmin.Enabled = false;
-                StudentsListAdmin.Visible = false;
             }
             else if (CurrentUserData.UserRole == "Администратор")
             {

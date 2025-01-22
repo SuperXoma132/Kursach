@@ -42,7 +42,8 @@ namespace Курсовая_работа_БОЯП
                     if (!(Firstname.Text.IsNullOrEmpty() || LastName.Text.IsNullOrEmpty() || MiddleName.Text.IsNullOrEmpty() ||
                         Sex.Text.IsNullOrEmpty() || ID.Text.IsNullOrEmpty() || EducationCost.Text.IsNullOrEmpty() || CreditsCount.Text.IsNullOrEmpty()) &&
                         (CreditsCount.Text.All(char.IsDigit) && (EducationCost.Text == "Бюджетная основа" || EducationCost.Text == "Платная основа")
-                        && (Sex.Text == "Женский" || Sex.Text == "Мужской") && ID.Text.All(char.IsDigit)) && dateTimePicker1.Value.Year < 2025)
+                        && (Sex.Text == "Женский" || Sex.Text == "Мужской") && ID.Text.All(char.IsDigit)) && 
+                        DateTime.Compare(dateTimePicker1.Value, DateTime.Today) < 0 ) // DateTime.Compare() дает - если первая дата раньше второй
                     {
                         sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
                         sqlConnection1.Open();
