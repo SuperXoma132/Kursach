@@ -12,7 +12,7 @@ namespace Курсовая_работа_БОЯП
 {
     public partial class Enter : Form
     {
-        public SqlConnection sqlConnection1 = null;
+        private SqlConnection sqlConnection1 = null;
         public SqlConnection sqlConnection2 = null;
         public Enter()
         {

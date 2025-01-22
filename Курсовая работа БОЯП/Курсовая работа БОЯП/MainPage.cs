@@ -47,7 +47,7 @@ namespace Курсовая_работа_БОЯП
         private void StudentsListButton_Click(object sender, EventArgs e)
         {
             StudentsList studentsList = new StudentsList();
-            studentsList.ShowDialog();
+            studentsList.Show();
         }
 
         private void CloseButton_Click(object sender, EventArgs e)

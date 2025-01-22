@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Курсовая_работа_БОЯП
 {
@@ -24,29 +25,109 @@ namespace Курсовая_работа_БОЯП
             sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
             sqlConnection1.Open();
             DataTable table = new DataTable();
-            string id = textBox2.Text.Trim();
+            string id = id_checker.Text.Trim();
 
             SqlCommand getInfoCommand = new SqlCommand($"SELECT FirstName, LastName, MiddleName, Birthday, Sex, Id, EducationCost, CreditsCount, Note FROM Students WHERE Id = N'{id}'", sqlConnection1);
             SqlDataReader getInfo = getInfoCommand.ExecuteReader();
-            while (getInfo.Read())
+            if (getInfo.HasRows)
             {
-                textBox1.Text = getInfo[0].ToString();
-                textBox3.Text = getInfo[1].ToString();
-                textBox4.Text = getInfo[2].ToString();
-                textBox5.Text = getInfo[3].ToString();
-                comboBox1.Text = getInfo[4].ToString();
-                textBox7.Text = getInfo[5].ToString();
-                textBox6.Text = getInfo[6].ToString();
-                textBox8.Text = getInfo[7].ToString();
-                textBox9.Text = getInfo[8].ToString();
+                while (getInfo.Read())
+                {
+                    Firstname.Text = getInfo[0].ToString();
+                    LastName.Text = getInfo[1].ToString();
+                    MiddleName.Text = getInfo[2].ToString();
+                    dateTimePicker1.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+                    dateTimePicker1.Value = DateTime.Parse(getInfo[3].ToString());
+                    Sex.Text = getInfo[4].ToString();
+                    ID.Text = getInfo[5].ToString();
+                    EducationCost.Text = getInfo[6].ToString();
+                    CreditsCount.Text = getInfo[7].ToString();
+                    Note.Text = getInfo[8].ToString();
+                }
             }
-
-
+            else
+            {
+                MessageBox.Show("Студента с таким номером не существует");
+                Firstname.Text = "";
+                LastName.Text = "";
+                MiddleName.Text = "";
+                Sex.Text = "";
+                ID.Text = "";
+                EducationCost.Text = "";
+                CreditsCount.Text = "";
+                Note.Text = "";
+                dateTimePicker1.CustomFormat = " ";
+                dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            }
         }
 
         private void StudentsChange_Load(object sender, EventArgs e)
         {
-            this.Text = $" Корнеев Александр Александрович, Логин: {CurrentUserData.UserLogin}, Роль: {CurrentUserData.UserRole}, Список группы";
+            this.Text = $" Корнеев Александр Александрович, Логин: {CurrentUserData.UserLogin}, Роль: {CurrentUserData.UserRole}, Редактирование студентов";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
+            sqlConnection1.Open();
+            if (!(Firstname.Text.IsNullOrEmpty() || LastName.Text.IsNullOrEmpty() || MiddleName.Text.IsNullOrEmpty() ||
+                Sex.Text.IsNullOrEmpty() || ID.Text.IsNullOrEmpty() || EducationCost.Text.IsNullOrEmpty() || CreditsCount.Text.IsNullOrEmpty()))
+            {
+                SqlCommand command = new SqlCommand($"SELECT COUNT(*) FROM Students WHERE Id = N'{ID.Text}'", sqlConnection1);
+                object idCheck = command.ExecuteScalar();
+                if (Convert.ToInt32(idCheck.ToString()) == 0)
+                {
+                    sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
+                    sqlConnection1.Open();
+                    SqlCommand updateTable = new SqlCommand($"UPDATE Students SET " +
+                        $"FirstName = N'{Firstname.Text}', " +
+                        $"LastName = N'{LastName.Text}', " +
+                        $"MiddleName = N'{MiddleName.Text}', " +
+                        $"Birthday = N'{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', " +
+                        $"Sex = N'{Sex.Text}', " +
+                        $"Id = N'{ID.Text}', " +
+                        $"EducationCost = N'{EducationCost.Text}', " +
+                        $"CreditsCount = N'{CreditsCount.Text}', " +
+                        $"Note = N'{Note.Text}' WHERE Id = N'{ID.Text}'", sqlConnection1);
+                    updateTable.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("Номер не уникален");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Заполните все поля корректно");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+
+        }
+
+        private void Sex_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Sex.Items.Add("Мужской");
+            Sex.Items.Add("Женский");
+
+        }
+
+        private void EducationCost_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EducationCost.Items.Add("Бюджетная основа");
+            EducationCost.Items.Add("Платная основа");
+        }
+
+        private void ID_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Курсовая_работа_БОЯП
 {
     public partial class StudentsList : Form
     {
-        SqlConnection sqlConnection1 = null;
+        private SqlConnection sqlConnection1 = null;
         public StudentsList()
         {
             InitializeComponent();
@@ -73,7 +73,7 @@ namespace Курсовая_работа_БОЯП
         private void button3_Click(object sender, EventArgs e)
         {
             StudentsChange studentsChange = new StudentsChange();
-            studentsChange.ShowDialog();
+            studentsChange.Show();
             this.Hide();
             studentsChange.FormClosed += (object s, FormClosedEventArgs ev) => this.Show();
         }
