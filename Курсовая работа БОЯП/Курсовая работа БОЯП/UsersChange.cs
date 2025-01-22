@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Курсовая_работа_БОЯП
 {
@@ -30,7 +25,6 @@ namespace Курсовая_работа_БОЯП
             Role.Items.Add("Пользователь");
             Role.Items.Add("Гость");
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
@@ -57,7 +51,6 @@ namespace Курсовая_работа_БОЯП
                 Role.Text = "";
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
@@ -68,7 +61,7 @@ namespace Курсовая_работа_БОЯП
             {
                 MessageBox.Show("Пароль не соответствует требованиям");
             }
-            else 
+            else
             {
                 if (!(Login.Text.IsNullOrEmpty() || Password.Text.IsNullOrEmpty()) && (Role.Text == "Администратор" || Role.Text == "Пользователь" || Role.Text == "Гость"))
                 {
@@ -87,15 +80,9 @@ namespace Курсовая_работа_БОЯП
                 }
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

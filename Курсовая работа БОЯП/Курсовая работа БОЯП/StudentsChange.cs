@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
-using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Курсовая_работа_БОЯП
 {
@@ -21,7 +12,6 @@ namespace Курсовая_работа_БОЯП
         {
             InitializeComponent();
         }
-
         private void button3_Click(object sender, EventArgs e) // поиск
         {
             sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
@@ -61,7 +51,6 @@ namespace Курсовая_работа_БОЯП
                 dateTimePicker1.Format = DateTimePickerFormat.Custom;
             }
         }
-
         private void StudentsChange_Load(object sender, EventArgs e)
         {
             this.Text = $" Корнеев Александр Александрович, Логин: {CurrentUserData.UserLogin}, Роль: {CurrentUserData.UserRole}, Редактирование студентов";
@@ -72,7 +61,6 @@ namespace Курсовая_работа_БОЯП
             EducationCost.Items.Add("Бюджетная основа");
             EducationCost.Items.Add("Платная основа");
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
@@ -102,29 +90,9 @@ namespace Курсовая_работа_БОЯП
                 MessageBox.Show("Заполните все поля корректно");
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
-        {
-
-        }
-
-        private void Sex_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void EducationCost_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void ID_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
