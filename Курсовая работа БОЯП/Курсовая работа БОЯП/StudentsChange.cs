@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Курсовая_работа_БОЯП
 {
@@ -26,7 +28,6 @@ namespace Курсовая_работа_БОЯП
             sqlConnection1.Open();
             DataTable table = new DataTable();
             string id = id_checker.Text.Trim();
-
             SqlCommand getInfoCommand = new SqlCommand($"SELECT FirstName, LastName, MiddleName, Birthday, Sex, Id, EducationCost, CreditsCount, Note FROM Students WHERE Id = N'{id}'", sqlConnection1);
             SqlDataReader getInfo = getInfoCommand.ExecuteReader();
             if (getInfo.HasRows)
@@ -36,7 +37,7 @@ namespace Курсовая_работа_БОЯП
                     Firstname.Text = getInfo[0].ToString();
                     LastName.Text = getInfo[1].ToString();
                     MiddleName.Text = getInfo[2].ToString();
-                    dateTimePicker1.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+                    dateTimePicker1.CustomFormat = "dd-MM-yyyy hh:mm:ss";
                     dateTimePicker1.Value = DateTime.Parse(getInfo[3].ToString());
                     Sex.Text = getInfo[4].ToString();
                     ID.Text = getInfo[5].ToString();
@@ -64,19 +65,25 @@ namespace Курсовая_работа_БОЯП
         private void StudentsChange_Load(object sender, EventArgs e)
         {
             this.Text = $" Корнеев Александр Александрович, Логин: {CurrentUserData.UserLogin}, Роль: {CurrentUserData.UserRole}, Редактирование студентов";
+            Sex.DropDownStyle = ComboBoxStyle.DropDown;
+            EducationCost.DropDownStyle = ComboBoxStyle.DropDown;
+            Sex.Items.Add("Мужской");
+            Sex.Items.Add("Женский");
+            EducationCost.Items.Add("Бюджетная основа");
+            EducationCost.Items.Add("Платная основа");
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
             sqlConnection1.Open();
+            int number;
             if (!(Firstname.Text.IsNullOrEmpty() || LastName.Text.IsNullOrEmpty() || MiddleName.Text.IsNullOrEmpty() ||
-                Sex.Text.IsNullOrEmpty() || ID.Text.IsNullOrEmpty() || EducationCost.Text.IsNullOrEmpty() || CreditsCount.Text.IsNullOrEmpty()))
+                Sex.Text.IsNullOrEmpty() || ID.Text.IsNullOrEmpty() || EducationCost.Text.IsNullOrEmpty() || CreditsCount.Text.IsNullOrEmpty()) &&
+                (int.TryParse(CreditsCount.Text, out number) && (EducationCost.Text == "Бюджетная основа" || EducationCost.Text == "Платная основа")
+                && (Sex.Text == "Женский" || Sex.Text == "Мужской") && dateTimePicker1.Value.Year < 2025))
             {
-                SqlCommand command = new SqlCommand($"SELECT COUNT(*) FROM Students WHERE Id = N'{ID.Text}'", sqlConnection1);
-                object idCheck = command.ExecuteScalar();
-                if (Convert.ToInt32(idCheck.ToString()) == 0)
-                {
                     sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
                     sqlConnection1.Open();
                     SqlCommand updateTable = new SqlCommand($"UPDATE Students SET " +
@@ -90,11 +97,6 @@ namespace Курсовая_работа_БОЯП
                         $"CreditsCount = N'{CreditsCount.Text}', " +
                         $"Note = N'{Note.Text}' WHERE Id = N'{ID.Text}'", sqlConnection1);
                     updateTable.ExecuteNonQuery();
-                }
-                else
-                {
-                    MessageBox.Show("Номер не уникален");
-                }
             }
             else
             {
@@ -114,15 +116,11 @@ namespace Курсовая_работа_БОЯП
 
         private void Sex_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Sex.Items.Add("Мужской");
-            Sex.Items.Add("Женский");
 
         }
 
         private void EducationCost_SelectedIndexChanged(object sender, EventArgs e)
         {
-            EducationCost.Items.Add("Бюджетная основа");
-            EducationCost.Items.Add("Платная основа");
         }
 
         private void ID_TextChanged(object sender, EventArgs e)

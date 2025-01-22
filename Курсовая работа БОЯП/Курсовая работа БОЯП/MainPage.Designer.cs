@@ -73,6 +73,7 @@
             AddStudentButton.TabIndex = 3;
             AddStudentButton.Text = "Добавление студента";
             AddStudentButton.UseVisualStyleBackColor = true;
+            AddStudentButton.Click += AddStudentButton_Click;
             // 
             // UsersListButton
             // 

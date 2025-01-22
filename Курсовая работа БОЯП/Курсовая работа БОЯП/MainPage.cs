@@ -59,5 +59,11 @@ namespace Курсовая_работа_БОЯП
         {
 
         }
+
+        private void AddStudentButton_Click(object sender, EventArgs e)
+        {
+            AddStudent addStudent = new AddStudent();
+            addStudent.Show();
+        }
     }
 }
