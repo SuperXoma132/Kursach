@@ -29,9 +29,9 @@ namespace Курсовая_работа_БОЯП
                     SqlCommand userRole = new SqlCommand($"SELECT Role FROM Users WHERE Login = N'{authLoginBox.Text}' AND Password = N'{authPasswordBox.Text}'", sqlConnection);
                     CurrentUserData.UserRole = userRole.ExecuteScalar().ToString().Trim();
                     SqlCommand userId = new SqlCommand($"SELECT Id FROM Users WHERE Login = N'{authLoginBox.Text}' AND Password = N'{authPasswordBox.Text}'", sqlConnection);
-                   CurrentUserData.UserId = userId.ExecuteScalar().ToString().Trim();
+                    CurrentUserData.UserId = userId.ExecuteScalar().ToString().Trim();
                     SqlCommand userLogin = new SqlCommand($"SELECT Login FROM Users WHERE Login = N'{authLoginBox.Text}' AND Password = N'{authPasswordBox.Text}'", sqlConnection);
-                   CurrentUserData.UserLogin = userLogin.ExecuteScalar().ToString().Trim();
+                    CurrentUserData.UserLogin = userLogin.ExecuteScalar().ToString().Trim();
                     MainPage main = new MainPage(CurrentUserData.UserLogin, CurrentUserData.UserRole);
                     this.Hide();
                     main.Show();
@@ -54,7 +54,7 @@ namespace Курсовая_работа_БОЯП
             else
             {
                 SqlCommand usersCountCommand = new SqlCommand($"SELECT COUNT(*) FROM Users WHERE Login = N'{regLoginBox.Text}'", sqlConnection);
-               object usersCount = usersCountCommand.ExecuteScalar();
+                object usersCount = usersCountCommand.ExecuteScalar();
                 if (Convert.ToInt32(usersCount.ToString()) == 0)
                 {
                     if (!(new Regex(@"[A-Z]+").IsMatch(regPasswordBox.Text)) || !(new Regex(@".{6,25}").IsMatch(regPasswordBox.Text)) || !(new Regex(@"[0-9]+")).IsMatch(regPasswordBox.Text) ||
@@ -65,9 +65,9 @@ namespace Курсовая_работа_БОЯП
                     else
                     {
                         SqlCommand getIdFromDB = new SqlCommand($"SELECT COUNT(*) FROM Users", sqlConnection);
-                       string id = (Convert.ToInt32(getIdFromDB.ExecuteScalar()) + 1).ToString();
+                        string id = (Convert.ToInt32(getIdFromDB.ExecuteScalar()) + 1).ToString();
                         SqlCommand addUserToDB = new SqlCommand($"INSERT INTO Users (Id, Login, Password, Role) VALUES (N'{id}', N'{regLoginBox.Text}', N'{regPasswordBox.Text}', N'Гость')", sqlConnection);
-                       addUserToDB.ExecuteNonQuery();
+                        addUserToDB.ExecuteNonQuery();
                         CurrentUserData.UserId = id;
                         CurrentUserData.UserRole = "Гость";
                         CurrentUserData.UserLogin = regLoginBox.Text.Trim();
@@ -84,8 +84,8 @@ namespace Курсовая_работа_БОЯП
             }
             sqlConnection.Close();
        }
-        private void Enter_Load(object sender, EventArgs e) //добавление студентов и пользователей
-        {
+         private void Enter_Load(object sender, EventArgs e) //добавление студентов и пользователей
+         {
             sqlConnection = new SqlConnection(CurrentUserData.ConnectionString);
             sqlConnection.Open();
             SqlCommand command1 = new SqlCommand("INSERT INTO Students (FirstName, LastName, MiddleName, Birthday, Sex, Id, EducationCost, CreditsCount, Note) VALUES (N'Корнеев', N'Александр', N'Александрович', N'2005-09-06', N'Мужской', 11, N'Бюджетная основа', 4, N'-')", sqlConnection);
@@ -117,7 +117,7 @@ namespace Курсовая_работа_БОЯП
             this.FormClosed += (object s, FormClosedEventArgs ev) => Application.Exit();
             sqlConnection.Close();
         }
-       private void Enter_FormClosing(object sender, FormClosingEventArgs e) // очистка баз данных
+        private void Enter_FormClosing(object sender, FormClosingEventArgs e) // очистка баз данных
         {
             sqlConnection.Open();
             SqlCommand deleteStudents = new SqlCommand($"DELETE FROM Students", sqlConnection);
