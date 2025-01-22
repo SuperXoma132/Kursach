@@ -1,11 +1,7 @@
 using System.Data;
 using System.Windows.Forms;
-using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using System.Runtime.CompilerServices;
-using System.Configuration;
-using System.Diagnostics.Metrics;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Text.RegularExpressions;
 
 namespace Курсовая_работа_БОЯП
@@ -19,7 +15,6 @@ namespace Курсовая_работа_БОЯП
             InitializeComponent();
             this.FormClosed += (object s, FormClosedEventArgs ev) => Application.Exit();
         }
-
         private void Enter_Load(object sender, EventArgs e)
         {
             //подключение к серверу
@@ -63,7 +58,6 @@ namespace Курсовая_работа_БОЯП
             sqlConnection1.Close();
 
         }
-
         private void button1_Click(object sender, EventArgs e) //авторизация
         {
             if (textBox1.Text == "" || textBox2.Text == "")
@@ -93,7 +87,6 @@ namespace Курсовая_работа_БОЯП
                 }
             }
         }
-
         private void button2_Click(object sender, EventArgs e) //регистрация
         {
             if (textBox4.Text == "" || textBox3.Text == "")

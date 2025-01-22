@@ -135,7 +135,6 @@
             Role.Name = "Role";
             Role.Size = new Size(121, 23);
             Role.TabIndex = 54;
-            Role.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // UsersChange
             // 

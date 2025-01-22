@@ -17,7 +17,6 @@ namespace Курсовая_работа_БОЯП
             InitializeComponent();
             this.Text = $"Корнеев Александр Александрович ЭПИ-211, Логин: {login}, Роль: {role}";
         }
-
         private void MainPage_Load(object sender, EventArgs e)
         {
             if (CurrentUserData.UserRole == "Гость")
@@ -39,7 +38,6 @@ namespace Курсовая_работа_БОЯП
                 //можно всё
             }
         }
-
         private void StudentsListButton_Click(object sender, EventArgs e)
         {
             StudentsList studentsList = new StudentsList();

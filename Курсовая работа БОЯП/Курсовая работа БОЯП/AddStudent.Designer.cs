@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Назад = new Button();
+            back = new Button();
             label1 = new Label();
             dateTimePicker1 = new DateTimePicker();
             EducationCost = new ComboBox();
@@ -51,15 +51,15 @@
             button1 = new Button();
             SuspendLayout();
             // 
-            // Назад
+            // back
             // 
-            Назад.Location = new Point(693, 396);
-            Назад.Name = "Назад";
-            Назад.Size = new Size(95, 42);
-            Назад.TabIndex = 1;
-            Назад.Text = "Назад";
-            Назад.UseVisualStyleBackColor = true;
-            Назад.Click += Назад_Click;
+            back.Location = new Point(693, 396);
+            back.Name = "back";
+            back.Size = new Size(95, 42);
+            back.TabIndex = 1;
+            back.Text = "Назад";
+            back.UseVisualStyleBackColor = true;
+            back.Click += back_Click;
             // 
             // label1
             // 
@@ -251,7 +251,7 @@
             Controls.Add(LastName);
             Controls.Add(Firstname);
             Controls.Add(label1);
-            Controls.Add(Назад);
+            Controls.Add(back);
             Name = "AddStudent";
             Text = "AddStudent";
             Load += AddStudent_Load;
@@ -261,7 +261,7 @@
 
         #endregion
 
-        private Button Назад;
+        private Button back;
         private Label label1;
         private DateTimePicker dateTimePicker1;
         private ComboBox EducationCost;

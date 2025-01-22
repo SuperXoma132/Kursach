@@ -107,7 +107,6 @@
             ID.Name = "ID";
             ID.Size = new Size(124, 23);
             ID.TabIndex = 9;
-            ID.TextChanged += ID_TextChanged;
             // 
             // CreditsCount
             // 
@@ -222,7 +221,6 @@
             Sex.Name = "Sex";
             Sex.Size = new Size(121, 23);
             Sex.TabIndex = 22;
-            Sex.SelectedIndexChanged += Sex_SelectedIndexChanged;
             // 
             // label10
             // 
@@ -240,7 +238,6 @@
             EducationCost.Name = "EducationCost";
             EducationCost.Size = new Size(121, 23);
             EducationCost.TabIndex = 25;
-            EducationCost.SelectedIndexChanged += EducationCost_SelectedIndexChanged;
             // 
             // dateTimePicker1
             // 

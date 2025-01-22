@@ -15,12 +15,6 @@ namespace Курсовая_работа_БОЯП
         {
             InitializeComponent();
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void StudentsList_Load(object sender, EventArgs e)
         {
             this.Text = $" Корнеев Александр Александрович, Логин: {CurrentUserData.UserLogin}, Роль: {CurrentUserData.UserRole}, Список группы";
@@ -45,9 +39,7 @@ namespace Курсовая_работа_БОЯП
             {
                 button3.Enabled = true;
             }
-
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
@@ -68,12 +60,10 @@ namespace Курсовая_работа_БОЯП
             dataGridView1.Columns[8].HeaderText = "Примечания";
             sqlConnection1.Close();
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             StudentsChange studentsChange = new StudentsChange();
