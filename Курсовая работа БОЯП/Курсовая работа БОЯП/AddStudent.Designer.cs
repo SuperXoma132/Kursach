@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            back = new Button();
+            closeButton = new Button();
             label1 = new Label();
             dateTimePicker1 = new DateTimePicker();
-            EducationCost = new ComboBox();
+            educationCostBox = new ComboBox();
             label10 = new Label();
-            Sex = new ComboBox();
+            sexBox = new ComboBox();
             label9 = new Label();
             label8 = new Label();
             label7 = new Label();
@@ -42,29 +42,29 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            Note = new TextBox();
-            CreditsCount = new TextBox();
-            ID = new TextBox();
-            MiddleName = new TextBox();
-            LastName = new TextBox();
-            Firstname = new TextBox();
-            button1 = new Button();
+            noteBox = new TextBox();
+            creditsCountBox = new TextBox();
+            numberBox = new TextBox();
+            middleNameBox = new TextBox();
+            lastNameBox = new TextBox();
+            firstNameBox = new TextBox();
+            addButton = new Button();
             SuspendLayout();
             // 
-            // back
+            // closeButton
             // 
-            back.Location = new Point(693, 396);
-            back.Name = "back";
-            back.Size = new Size(95, 42);
-            back.TabIndex = 1;
-            back.Text = "Назад";
-            back.UseVisualStyleBackColor = true;
-            back.Click += back_Click;
+            closeButton.Location = new Point(331, 396);
+            closeButton.Name = "closeButton";
+            closeButton.Size = new Size(95, 42);
+            closeButton.TabIndex = 1;
+            closeButton.Text = "Назад";
+            closeButton.UseVisualStyleBackColor = true;
+            closeButton.Click += closeButton_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(342, 9);
+            label1.Location = new Point(152, 9);
             label1.Name = "label1";
             label1.Size = new Size(94, 15);
             label1.TabIndex = 2;
@@ -72,40 +72,40 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(555, 107);
+            dateTimePicker1.Location = new Point(302, 310);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
+            dateTimePicker1.Size = new Size(114, 23);
             dateTimePicker1.TabIndex = 44;
             // 
-            // EducationCost
+            // educationCostBox
             // 
-            EducationCost.FormattingEnabled = true;
-            EducationCost.Location = new Point(46, 339);
-            EducationCost.Name = "EducationCost";
-            EducationCost.Size = new Size(121, 23);
-            EducationCost.TabIndex = 43;
+            educationCostBox.FormattingEnabled = true;
+            educationCostBox.Location = new Point(4, 310);
+            educationCostBox.Name = "educationCostBox";
+            educationCostBox.Size = new Size(121, 23);
+            educationCostBox.TabIndex = 43;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(46, 321);
+            label10.Location = new Point(4, 292);
             label10.Name = "label10";
             label10.Size = new Size(123, 15);
             label10.TabIndex = 42;
             label10.Text = "Стоимость обучения";
             // 
-            // Sex
+            // sexBox
             // 
-            Sex.FormattingEnabled = true;
-            Sex.Location = new Point(46, 239);
-            Sex.Name = "Sex";
-            Sex.Size = new Size(121, 23);
-            Sex.TabIndex = 41;
+            sexBox.FormattingEnabled = true;
+            sexBox.Location = new Point(4, 190);
+            sexBox.Name = "sexBox";
+            sexBox.Size = new Size(121, 23);
+            sexBox.TabIndex = 41;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(555, 221);
+            label9.Location = new Point(152, 292);
             label9.Name = "label9";
             label9.Size = new Size(78, 15);
             label9.TabIndex = 40;
@@ -114,7 +114,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(384, 221);
+            label8.Location = new Point(302, 172);
             label8.Name = "label8";
             label8.Size = new Size(113, 15);
             label8.TabIndex = 39;
@@ -123,7 +123,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(215, 221);
+            label7.Location = new Point(152, 172);
             label7.Name = "label7";
             label7.Size = new Size(86, 15);
             label7.TabIndex = 38;
@@ -132,7 +132,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(46, 221);
+            label6.Location = new Point(4, 172);
             label6.Name = "label6";
             label6.Size = new Size(30, 15);
             label6.TabIndex = 37;
@@ -141,7 +141,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(555, 89);
+            label5.Location = new Point(302, 292);
             label5.Name = "label5";
             label5.Size = new Size(90, 15);
             label5.TabIndex = 36;
@@ -150,7 +150,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(384, 89);
+            label4.Location = new Point(302, 40);
             label4.Name = "label4";
             label4.Size = new Size(58, 15);
             label4.TabIndex = 35;
@@ -159,7 +159,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(215, 89);
+            label3.Location = new Point(152, 40);
             label3.Name = "label3";
             label3.Size = new Size(31, 15);
             label3.TabIndex = 34;
@@ -168,74 +168,74 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(46, 89);
+            label2.Location = new Point(4, 40);
             label2.Name = "label2";
             label2.Size = new Size(58, 15);
             label2.TabIndex = 33;
             label2.Text = "Фамилия";
             // 
-            // Note
+            // noteBox
             // 
-            Note.Location = new Point(555, 239);
-            Note.Name = "Note";
-            Note.Size = new Size(124, 23);
-            Note.TabIndex = 32;
+            noteBox.Location = new Point(152, 310);
+            noteBox.Name = "noteBox";
+            noteBox.Size = new Size(124, 23);
+            noteBox.TabIndex = 32;
             // 
-            // CreditsCount
+            // creditsCountBox
             // 
-            CreditsCount.Location = new Point(384, 239);
-            CreditsCount.Name = "CreditsCount";
-            CreditsCount.Size = new Size(124, 23);
-            CreditsCount.TabIndex = 31;
+            creditsCountBox.Location = new Point(302, 190);
+            creditsCountBox.Name = "creditsCountBox";
+            creditsCountBox.Size = new Size(124, 23);
+            creditsCountBox.TabIndex = 31;
             // 
-            // ID
+            // numberBox
             // 
-            ID.Location = new Point(215, 239);
-            ID.Name = "ID";
-            ID.Size = new Size(124, 23);
-            ID.TabIndex = 30;
+            numberBox.Location = new Point(152, 190);
+            numberBox.Name = "numberBox";
+            numberBox.Size = new Size(124, 23);
+            numberBox.TabIndex = 30;
             // 
-            // MiddleName
+            // middleNameBox
             // 
-            MiddleName.Location = new Point(384, 107);
-            MiddleName.Name = "MiddleName";
-            MiddleName.Size = new Size(124, 23);
-            MiddleName.TabIndex = 29;
+            middleNameBox.Location = new Point(302, 58);
+            middleNameBox.Name = "middleNameBox";
+            middleNameBox.Size = new Size(124, 23);
+            middleNameBox.TabIndex = 29;
             // 
-            // LastName
+            // lastNameBox
             // 
-            LastName.Location = new Point(215, 107);
-            LastName.Name = "LastName";
-            LastName.Size = new Size(124, 23);
-            LastName.TabIndex = 28;
+            lastNameBox.Location = new Point(152, 58);
+            lastNameBox.Name = "lastNameBox";
+            lastNameBox.Size = new Size(124, 23);
+            lastNameBox.TabIndex = 28;
             // 
-            // Firstname
+            // firstNameBox
             // 
-            Firstname.Location = new Point(46, 107);
-            Firstname.Name = "Firstname";
-            Firstname.Size = new Size(124, 23);
-            Firstname.TabIndex = 27;
+            firstNameBox.Location = new Point(4, 58);
+            firstNameBox.Name = "firstNameBox";
+            firstNameBox.Size = new Size(124, 23);
+            firstNameBox.TabIndex = 27;
             // 
-            // button1
+            // addButton
             // 
-            button1.Location = new Point(342, 396);
-            button1.Name = "button1";
-            button1.Size = new Size(138, 42);
-            button1.TabIndex = 45;
-            button1.Text = "Добавить";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            addButton.Location = new Point(4, 396);
+            addButton.Name = "addButton";
+            addButton.Size = new Size(138, 42);
+            addButton.TabIndex = 45;
+            addButton.Text = "Добавить";
+            addButton.UseVisualStyleBackColor = true;
+            addButton.Click += addButton_Click;
             // 
             // AddStudent
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(button1);
+            ClientSize = new Size(434, 450);
+            Controls.Add(addButton);
             Controls.Add(dateTimePicker1);
-            Controls.Add(EducationCost);
+            Controls.Add(educationCostBox);
             Controls.Add(label10);
-            Controls.Add(Sex);
+            Controls.Add(sexBox);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label7);
@@ -244,16 +244,15 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(Note);
-            Controls.Add(CreditsCount);
-            Controls.Add(ID);
-            Controls.Add(MiddleName);
-            Controls.Add(LastName);
-            Controls.Add(Firstname);
+            Controls.Add(noteBox);
+            Controls.Add(creditsCountBox);
+            Controls.Add(numberBox);
+            Controls.Add(middleNameBox);
+            Controls.Add(lastNameBox);
+            Controls.Add(firstNameBox);
             Controls.Add(label1);
-            Controls.Add(back);
+            Controls.Add(closeButton);
             Name = "AddStudent";
-            Text = "AddStudent";
             Load += AddStudent_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -261,12 +260,12 @@
 
         #endregion
 
-        private Button back;
+        private Button closeButton;
         private Label label1;
         private DateTimePicker dateTimePicker1;
-        private ComboBox EducationCost;
+        private ComboBox educationCostBox;
         private Label label10;
-        private ComboBox Sex;
+        private ComboBox sexBox;
         private Label label9;
         private Label label8;
         private Label label7;
@@ -275,12 +274,12 @@
         private Label label4;
         private Label label3;
         private Label label2;
-        private TextBox Note;
-        private TextBox CreditsCount;
-        private TextBox ID;
-        private TextBox MiddleName;
-        private TextBox LastName;
-        private TextBox Firstname;
-        private Button button1;
+        private TextBox noteBox;
+        private TextBox creditsCountBox;
+        private TextBox numberBox;
+        private TextBox middleNameBox;
+        private TextBox lastNameBox;
+        private TextBox firstNameBox;
+        private Button addButton;
     }
 }

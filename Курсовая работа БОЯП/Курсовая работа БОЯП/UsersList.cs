@@ -7,55 +7,52 @@ namespace Курсовая_работа_БОЯП
 {
     public partial class UsersList : Form
     {
-        SqlConnection sqlConnection1 = null;
+        SqlConnection sqlConnection = null;
         public UsersList()
         {
             InitializeComponent();
         }
         private void UsersList_Load(object sender, EventArgs e)
         {
-            this.Text = $" Корнеев Александр Александрович, Логин: {SavedUserData.UserLogin}, Роль: {SavedUserData.UserRole}, Список пользователей";
-            sqlConnection1 = new SqlConnection(SavedUserData.ConnectionString);
-            sqlConnection1.Open();
+            this.Text = $"Казаков Даниил Валерьевич --- Логин: {SavedUserData.UserLogin} --- Роль: {SavedUserData.UserRole} --- Список пользователей";
+            sqlConnection = new SqlConnection(SavedUserData.ConnectionString);
+            sqlConnection.Open();
             DataTable table = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Id, Login, Password, Role FROM Users", sqlConnection1);
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Id, Login, Password, Role FROM Users", sqlConnection);
             adapter.Fill(table);
-            dataGridView1.ReadOnly = true;
             dataGridView1.DataSource = table;
             dataGridView1.Columns[0].HeaderText = "ID";
             dataGridView1.Columns[1].HeaderText = "Name";
             dataGridView1.Columns[2].HeaderText = "Password";
             dataGridView1.Columns[3].HeaderText = "Role";
-            sqlConnection1.Close();
+            sqlConnection.Close();
             if (SavedUserData.UserRole == "Администратор")
             {
-                button3.Enabled = true;
+                modButton.Enabled = true;
             }
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void updateButton_Click(object sender, EventArgs e)
         {
-            this.Text = $" Корнеев Александр Александрович, Логин: {SavedUserData.UserLogin}, Роль: {SavedUserData.UserRole}, Список пользователей";
-            sqlConnection1 = new SqlConnection(SavedUserData.ConnectionString);
-            sqlConnection1.Open();
+            sqlConnection = new SqlConnection(SavedUserData.ConnectionString);
+            sqlConnection.Open();
             DataTable table = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Id, Login, Password, Role FROM Users", sqlConnection1);
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Id, Login, Password, Role FROM Users", sqlConnection);
             adapter.Fill(table);
-            dataGridView1.ReadOnly = true;
             dataGridView1.DataSource = table;
             dataGridView1.Columns[0].HeaderText = "ID";
             dataGridView1.Columns[1].HeaderText = "Name";
             dataGridView1.Columns[2].HeaderText = "Password";
             dataGridView1.Columns[3].HeaderText = "Role";
-            sqlConnection1.Close();
+            sqlConnection.Close();
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        private void button3_Click(object sender, EventArgs e)
+        private void modButton_Click(object sender, EventArgs e)
         {
-            UsersChange usersChange = new UsersChange();
-            usersChange.Show();
+            UsersListMod usersListMod = new UsersListMod();
+            usersListMod.Show();
         }
     }
 }

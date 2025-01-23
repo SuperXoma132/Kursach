@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            button1 = new Button();
+            closeButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -41,26 +41,25 @@
             dataGridView1.Size = new Size(801, 404);
             dataGridView1.TabIndex = 0;
             // 
-            // button1
+            // closeButton
             // 
-            button1.Location = new Point(356, 415);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 1;
-            button1.Text = "Назад";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            closeButton.Location = new Point(356, 415);
+            closeButton.Name = "closeButton";
+            closeButton.Size = new Size(75, 23);
+            closeButton.TabIndex = 1;
+            closeButton.Text = "Назад";
+            closeButton.UseVisualStyleBackColor = true;
+            closeButton.Click += closeButton_Click;
             // 
             // DataProcessing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
+            Controls.Add(closeButton);
             Controls.Add(dataGridView1);
             Name = "DataProcessing";
-            Text = "Sorting";
-            Load += Sorting_Load;
+            Load += DataProcessing_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
@@ -68,6 +67,6 @@
         #endregion
 
         private DataGridView dataGridView1;
-        private Button button1;
+        private Button closeButton;
     }
 }

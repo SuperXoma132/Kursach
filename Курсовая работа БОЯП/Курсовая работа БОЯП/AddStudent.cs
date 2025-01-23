@@ -6,48 +6,47 @@ namespace Курсовая_работа_БОЯП
 {
     public partial class AddStudent : Form
     {
-        SqlConnection sqlConnection1 = null;
+        SqlConnection sqlConnection = null;
         public AddStudent()
         {
             InitializeComponent();
         }
-        private void back_Click(object sender, EventArgs e)
+        private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void addButton_Click(object sender, EventArgs e)
         {
-            sqlConnection1 = new SqlConnection(SavedUserData.ConnectionString);
-            sqlConnection1.Open();
-            if (ID.Text.All(char.IsDigit))
+            sqlConnection = new SqlConnection(SavedUserData.ConnectionString);
+            sqlConnection.Open();
+            if (numberBox.Text.All(char.IsDigit))
             {
-                SqlCommand command = new SqlCommand($"SELECT COUNT(*) FROM Students WHERE Id = N'{ID.Text}'", sqlConnection1);
+                SqlCommand command = new SqlCommand($"SELECT COUNT(*) FROM Students WHERE Id = N'{numberBox.Text}'", sqlConnection);
                 object a = command.ExecuteScalar();
 
-                sqlConnection1.Close();
+                sqlConnection.Close();
                 if (Convert.ToInt32(a.ToString()) == 0)
                 {
 
-                    if (!(Firstname.Text.IsNullOrEmpty() || LastName.Text.IsNullOrEmpty() || MiddleName.Text.IsNullOrEmpty() ||
-                        Sex.Text.IsNullOrEmpty() || ID.Text.IsNullOrEmpty() || EducationCost.Text.IsNullOrEmpty() || CreditsCount.Text.IsNullOrEmpty()) &&
-                        (CreditsCount.Text.All(char.IsDigit) && (EducationCost.Text == "Бюджетная основа" || EducationCost.Text == "Платная основа")
-                        && (Sex.Text == "Женский" || Sex.Text == "Мужской") && ID.Text.All(char.IsDigit)) && 
-                        DateTime.Compare(dateTimePicker1.Value, DateTime.Today) < 0 ) // DateTime.Compare() дает - если первая дата раньше второй
+                    if (!(firstNameBox.Text.IsNullOrEmpty() || lastNameBox.Text.IsNullOrEmpty() || middleNameBox.Text.IsNullOrEmpty() ||
+                        sexBox.Text.IsNullOrEmpty() || numberBox.Text.IsNullOrEmpty() || educationCostBox.Text.IsNullOrEmpty() || creditsCountBox.Text.IsNullOrEmpty()) &&
+                        (creditsCountBox.Text.All(char.IsDigit) && (educationCostBox.Text == "Бюджетная основа" || educationCostBox.Text == "Платная основа")
+                        && (sexBox.Text == "Женский" || sexBox.Text == "Мужской") && numberBox.Text.All(char.IsDigit)) && 
+                        DateTime.Compare(dateTimePicker1.Value, DateTime.Today) < 0 )
                     {
-                        sqlConnection1 = new SqlConnection(SavedUserData.ConnectionString);
-                        sqlConnection1.Open();
+                        sqlConnection = new SqlConnection(SavedUserData.ConnectionString);
+                        sqlConnection.Open();
                         SqlCommand updateTable = new SqlCommand($"INSERT INTO Students VALUES (" +
-                            $"N'{Firstname.Text}', " +
-                            $"N'{LastName.Text}', " +
-                            $"N'{MiddleName.Text}', " +
+                            $"N'{firstNameBox.Text}', " +
+                            $"N'{lastNameBox.Text}', " +
+                            $"N'{middleNameBox.Text}', " +
                             $"N'{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', " +
-                            $"N'{Sex.Text}', " +
-                            $"N'{Convert.ToInt32(ID.Text)}', " +
-                            $"N'{EducationCost.Text}', " +
-                            $"N'{CreditsCount.Text}', " +
-                            $"N'{Note.Text}')", sqlConnection1);
+                            $"N'{sexBox.Text}', " +
+                            $"N'{Convert.ToInt32(numberBox.Text)}', " +
+                            $"N'{educationCostBox.Text}', " +
+                            $"N'{creditsCountBox.Text}', " +
+                            $"N'{noteBox.Text}')", sqlConnection);
                         updateTable.ExecuteNonQuery();
-                        MessageBox.Show("Успешно");
                     }
                     else
                     {
@@ -66,13 +65,13 @@ namespace Курсовая_работа_БОЯП
         }
         private void AddStudent_Load(object sender, EventArgs e)
         {
-            this.Text = $" Корнеев Александр Александрович, Логин: {SavedUserData.UserLogin}, Роль: {SavedUserData.UserRole}, Редактирование студентов";
-            Sex.DropDownStyle = ComboBoxStyle.DropDownList;
-            EducationCost.DropDownStyle = ComboBoxStyle.DropDownList;
-            Sex.Items.Add("Мужской");
-            Sex.Items.Add("Женский");
-            EducationCost.Items.Add("Бюджетная основа");
-            EducationCost.Items.Add("Платная основа");
+            this.Text = $"Казаков Даниил Валерьевич ЭПИ-211 --- Логин: {SavedUserData.UserLogin} --- Роль: {SavedUserData.UserRole} --- Добавление студента";
+            sexBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            sexBox.Items.Add("Мужской");
+            sexBox.Items.Add("Женский");
+            educationCostBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            educationCostBox.Items.Add("Бюджетная основа");
+            educationCostBox.Items.Add("Платная основа");
         }
     }
 }

@@ -96,7 +96,6 @@
             Controls.Add(studentsListButton);
             Controls.Add(closeButton);
             Name = "Main";
-            Text = "Form4";
             Load += Main_Load;
             ResumeLayout(false);
         }

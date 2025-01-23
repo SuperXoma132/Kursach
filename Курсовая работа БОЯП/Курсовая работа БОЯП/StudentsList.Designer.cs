@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            updateButton = new Button();
+            closeButton = new Button();
+            modificationButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -40,51 +40,52 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(12, 3);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(921, 396);
+            dataGridView1.Size = new Size(734, 310);
             dataGridView1.TabIndex = 0;
             // 
-            // button1
+            // updateButton
             // 
-            button1.Location = new Point(36, 405);
-            button1.Name = "button1";
-            button1.Size = new Size(179, 37);
-            button1.TabIndex = 1;
-            button1.Text = "Обновить";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            updateButton.Location = new Point(91, 319);
+            updateButton.Name = "updateButton";
+            updateButton.Size = new Size(179, 37);
+            updateButton.TabIndex = 1;
+            updateButton.Text = "Обновить";
+            updateButton.UseVisualStyleBackColor = true;
+            updateButton.Click += updateButton_Click;
             // 
-            // button2
+            // closeButton
             // 
-            button2.Location = new Point(720, 405);
-            button2.Name = "button2";
-            button2.Size = new Size(179, 37);
-            button2.TabIndex = 2;
-            button2.Text = "Назад";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            closeButton.BackgroundImageLayout = ImageLayout.None;
+            closeButton.Cursor = Cursors.IBeam;
+            closeButton.Location = new Point(276, 319);
+            closeButton.Name = "closeButton";
+            closeButton.Size = new Size(179, 37);
+            closeButton.TabIndex = 2;
+            closeButton.Text = "Назад";
+            closeButton.UseVisualStyleBackColor = true;
+            closeButton.Click += closeButton_Click;
             // 
-            // button3
+            // modificationButton
             // 
-            button3.Enabled = false;
-            button3.Location = new Point(383, 405);
-            button3.Name = "button3";
-            button3.Size = new Size(179, 37);
-            button3.TabIndex = 3;
-            button3.Text = "Редактировать";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            modificationButton.Enabled = false;
+            modificationButton.Location = new Point(461, 319);
+            modificationButton.Name = "modificationButton";
+            modificationButton.Size = new Size(179, 37);
+            modificationButton.TabIndex = 3;
+            modificationButton.Text = "Редактировать";
+            modificationButton.UseVisualStyleBackColor = true;
+            modificationButton.Click += modificationButton_Click;
             // 
             // StudentsList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(934, 450);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            ClientSize = new Size(758, 363);
+            Controls.Add(modificationButton);
+            Controls.Add(closeButton);
+            Controls.Add(updateButton);
             Controls.Add(dataGridView1);
             Name = "StudentsList";
-            Text = "StudentsList";
             Load += StudentsList_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
@@ -93,8 +94,8 @@
         #endregion
 
         private DataGridView dataGridView1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button updateButton;
+        private Button closeButton;
+        private Button modificationButton;
     }
 }
