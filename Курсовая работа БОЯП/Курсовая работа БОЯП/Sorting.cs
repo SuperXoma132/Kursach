@@ -13,7 +13,7 @@ namespace Курсовая_работа_БОЯП
         }
         private void Sorting_Load(object sender, EventArgs e)
         {
-            this.Text = $" Корнеев Александр Александрович, Логин: {CurrentUserData.UserLogin}, Роль: {CurrentUserData.UserRole}, Список группы";
+            this.Text = $" Корнеев Александр Александрович, Логин: {CurrentUserData.UserLogin}, Роль: {CurrentUserData.UserRole}, Отбор данных";
             sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
             sqlConnection1.Open();
             DataTable table = new DataTable();
