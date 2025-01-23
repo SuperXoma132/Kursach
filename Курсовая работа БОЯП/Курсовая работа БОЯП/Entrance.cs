@@ -27,12 +27,12 @@ namespace Курсовая_работа_БОЯП
                 if (Convert.ToInt32(usersCount.ToString()) == 1)
                 {
                     SqlCommand userRole = new SqlCommand($"SELECT Role FROM Users WHERE Login = N'{authLoginBox.Text}' AND Password = N'{authPasswordBox.Text}'", sqlConnection);
-                    CurrentUserData.UserRole = userRole.ExecuteScalar().ToString().Trim();
+                    SavedUserData.UserRole = userRole.ExecuteScalar().ToString().Trim();
                     SqlCommand userId = new SqlCommand($"SELECT Id FROM Users WHERE Login = N'{authLoginBox.Text}' AND Password = N'{authPasswordBox.Text}'", sqlConnection);
-                    CurrentUserData.UserId = userId.ExecuteScalar().ToString().Trim();
+                    SavedUserData.UserId = userId.ExecuteScalar().ToString().Trim();
                     SqlCommand userLogin = new SqlCommand($"SELECT Login FROM Users WHERE Login = N'{authLoginBox.Text}' AND Password = N'{authPasswordBox.Text}'", sqlConnection);
-                    CurrentUserData.UserLogin = userLogin.ExecuteScalar().ToString().Trim();
-                    MainPage main = new MainPage(CurrentUserData.UserLogin, CurrentUserData.UserRole);
+                    SavedUserData.UserLogin = userLogin.ExecuteScalar().ToString().Trim();
+                    Main main = new Main(SavedUserData.UserLogin, SavedUserData.UserRole);
                     this.Hide();
                     main.Show();
                     main.FormClosed += (object s, FormClosedEventArgs ev) => this.Show();
@@ -68,10 +68,10 @@ namespace Курсовая_работа_БОЯП
                         string id = (Convert.ToInt32(getIdFromDB.ExecuteScalar()) + 1).ToString();
                         SqlCommand addUserToDB = new SqlCommand($"INSERT INTO Users (Id, Login, Password, Role) VALUES (N'{id}', N'{regLoginBox.Text}', N'{regPasswordBox.Text}', N'Гость')", sqlConnection);
                         addUserToDB.ExecuteNonQuery();
-                        CurrentUserData.UserId = id;
-                        CurrentUserData.UserRole = "Гость";
-                        CurrentUserData.UserLogin = regLoginBox.Text.Trim();
-                        MainPage mainPage = new MainPage(CurrentUserData.UserLogin, CurrentUserData.UserRole);
+                        SavedUserData.UserId = id;
+                        SavedUserData.UserRole = "Гость";
+                        SavedUserData.UserLogin = regLoginBox.Text.Trim();
+                        Main mainPage = new Main(SavedUserData.UserLogin, SavedUserData.UserRole);
                         this.Hide();
                         mainPage.Show();
                         mainPage.FormClosed += (object s, FormClosedEventArgs ev) => this.Show();
@@ -79,14 +79,14 @@ namespace Курсовая_работа_БОЯП
                 }
                 else
                 {
-                    MessageBox.Show("Пользователь с таким логином уже существует");
+                    MessageBox.Show("Пользователь с таким логином уже есть в базе");
                 }
             }
             sqlConnection.Close();
         }
          private void Enter_Load(object sender, EventArgs e) //добавление студентов и пользователей
          {
-             sqlConnection = new SqlConnection(CurrentUserData.ConnectionString);
+             sqlConnection = new SqlConnection(SavedUserData.ConnectionString);
              sqlConnection.Open();
              SqlCommand command1 = new SqlCommand("INSERT INTO Students (FirstName, LastName, MiddleName, Birthday, Sex, Id, EducationCost, CreditsCount, Note) VALUES (N'Корнеев', N'Александр', N'Александрович', N'2005-09-06', N'Мужской', 11, N'Бюджетная основа', 4, N'-')", sqlConnection);
              SqlCommand command2 = new SqlCommand("INSERT INTO Students (FirstName, LastName, MiddleName, Birthday, Sex, Id, EducationCost, CreditsCount, Note) VALUES (N'Казаков', N'Даниил', N'Валерьевич', '2005-07-12', N'Мужской', 8, N'Бюджетная основа', 3, N'-')", sqlConnection);

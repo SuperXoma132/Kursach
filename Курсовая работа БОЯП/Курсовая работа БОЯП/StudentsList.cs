@@ -17,8 +17,8 @@ namespace Курсовая_работа_БОЯП
         }
         private void StudentsList_Load(object sender, EventArgs e)
         {
-            this.Text = $" Корнеев Александр Александрович, Логин: {CurrentUserData.UserLogin}, Роль: {CurrentUserData.UserRole}, Список группы";
-            sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
+            this.Text = $" Корнеев Александр Александрович, Логин: {SavedUserData.UserLogin}, Роль: {SavedUserData.UserRole}, Список группы";
+            sqlConnection1 = new SqlConnection(SavedUserData.ConnectionString);
             sqlConnection1.Open();
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter("SELECT FirstName, LastName, MiddleName, Birthday, Sex, Id, EducationCost, CreditsCount, Note FROM Students", sqlConnection1);
@@ -35,14 +35,14 @@ namespace Курсовая_работа_БОЯП
             dataGridView1.Columns[7].HeaderText = "Долги";
             dataGridView1.Columns[8].HeaderText = "Примечания";
             sqlConnection1.Close();
-            if (CurrentUserData.UserRole == "Администратор")
+            if (SavedUserData.UserRole == "Администратор")
             {
                 button3.Enabled = true;
             }
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
+            sqlConnection1 = new SqlConnection(SavedUserData.ConnectionString);
             sqlConnection1.Open();
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter("SELECT FirstName, LastName, MiddleName, Birthday, Sex, Id, EducationCost, CreditsCount, Note FROM Students", sqlConnection1);

@@ -19,7 +19,7 @@ namespace Курсовая_работа_БОЯП
 
         private void UsersChange_Load(object sender, EventArgs e)
         {
-            this.Text = $"Корнеев Александр Александрович, Логин: {CurrentUserData.UserLogin}, Роль: {CurrentUserData.UserRole}, Редактирование пользователей";
+            this.Text = $"Корнеев Александр Александрович, Логин: {SavedUserData.UserLogin}, Роль: {SavedUserData.UserRole}, Редактирование пользователей";
             Role.DropDownStyle = ComboBoxStyle.DropDown;
             Role.Items.Add("Администратор");
             Role.Items.Add("Пользователь");
@@ -27,7 +27,7 @@ namespace Курсовая_работа_БОЯП
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
+            sqlConnection1 = new SqlConnection(SavedUserData.ConnectionString);
             sqlConnection1.Open();
             DataTable table = new DataTable();
             string id = id_checker.Text.Trim();
@@ -53,7 +53,7 @@ namespace Курсовая_работа_БОЯП
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
+            sqlConnection1 = new SqlConnection(SavedUserData.ConnectionString);
             sqlConnection1.Open();
             int number;
             if (!(new Regex(@"[A-Z]+").IsMatch(Password.Text)) || !(new Regex(@".{6,30}").IsMatch(Password.Text)) || !(new Regex(@"[0-9]+")).IsMatch(Password.Text) ||
@@ -65,7 +65,7 @@ namespace Курсовая_работа_БОЯП
             {
                 if (!(Login.Text.IsNullOrEmpty() || Password.Text.IsNullOrEmpty()) && (Role.Text == "Администратор" || Role.Text == "Пользователь" || Role.Text == "Гость"))
                 {
-                    sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
+                    sqlConnection1 = new SqlConnection(SavedUserData.ConnectionString);
                     sqlConnection1.Open();
                     SqlCommand updateTable = new SqlCommand($"UPDATE Users SET " +
                         $"Login = N'{Login.Text}', " +

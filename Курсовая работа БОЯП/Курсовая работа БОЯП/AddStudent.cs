@@ -17,7 +17,7 @@ namespace Курсовая_работа_БОЯП
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
+            sqlConnection1 = new SqlConnection(SavedUserData.ConnectionString);
             sqlConnection1.Open();
             if (ID.Text.All(char.IsDigit))
             {
@@ -34,7 +34,7 @@ namespace Курсовая_работа_БОЯП
                         && (Sex.Text == "Женский" || Sex.Text == "Мужской") && ID.Text.All(char.IsDigit)) && 
                         DateTime.Compare(dateTimePicker1.Value, DateTime.Today) < 0 ) // DateTime.Compare() дает - если первая дата раньше второй
                     {
-                        sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
+                        sqlConnection1 = new SqlConnection(SavedUserData.ConnectionString);
                         sqlConnection1.Open();
                         SqlCommand updateTable = new SqlCommand($"INSERT INTO Students VALUES (" +
                             $"N'{Firstname.Text}', " +
@@ -66,7 +66,7 @@ namespace Курсовая_работа_БОЯП
         }
         private void AddStudent_Load(object sender, EventArgs e)
         {
-            this.Text = $" Корнеев Александр Александрович, Логин: {CurrentUserData.UserLogin}, Роль: {CurrentUserData.UserRole}, Редактирование студентов";
+            this.Text = $" Корнеев Александр Александрович, Логин: {SavedUserData.UserLogin}, Роль: {SavedUserData.UserRole}, Редактирование студентов";
             Sex.DropDownStyle = ComboBoxStyle.DropDownList;
             EducationCost.DropDownStyle = ComboBoxStyle.DropDownList;
             Sex.Items.Add("Мужской");

@@ -4,17 +4,17 @@ using Microsoft.Data.SqlClient;
 
 namespace Курсовая_работа_БОЯП
 {
-    public partial class Sorting : Form //мужской пол, номер студенческого по возрастанию
+    public partial class DataProcessing : Form //мужской пол, номер студенческого по возрастанию
     {
         private SqlConnection sqlConnection1 = null;
-        public Sorting()
+        public DataProcessing()
         {
             InitializeComponent();
         }
         private void Sorting_Load(object sender, EventArgs e)
         {
-            this.Text = $" Корнеев Александр Александрович, Логин: {CurrentUserData.UserLogin}, Роль: {CurrentUserData.UserRole}, Список группы";
-            sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
+            this.Text = $" Корнеев Александр Александрович, Логин: {SavedUserData.UserLogin}, Роль: {SavedUserData.UserRole}, Список группы";
+            sqlConnection1 = new SqlConnection(SavedUserData.ConnectionString);
             sqlConnection1.Open();
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter("SELECT FirstName, LastName, MiddleName, Birthday, Sex, Id, EducationCost, CreditsCount, Note FROM Students WHERE " +

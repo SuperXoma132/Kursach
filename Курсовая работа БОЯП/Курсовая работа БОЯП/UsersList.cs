@@ -14,8 +14,8 @@ namespace Курсовая_работа_БОЯП
         }
         private void UsersList_Load(object sender, EventArgs e)
         {
-            this.Text = $" Корнеев Александр Александрович, Логин: {CurrentUserData.UserLogin}, Роль: {CurrentUserData.UserRole}, Список пользователей";
-            sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
+            this.Text = $" Корнеев Александр Александрович, Логин: {SavedUserData.UserLogin}, Роль: {SavedUserData.UserRole}, Список пользователей";
+            sqlConnection1 = new SqlConnection(SavedUserData.ConnectionString);
             sqlConnection1.Open();
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter("SELECT Id, Login, Password, Role FROM Users", sqlConnection1);
@@ -27,15 +27,15 @@ namespace Курсовая_работа_БОЯП
             dataGridView1.Columns[2].HeaderText = "Password";
             dataGridView1.Columns[3].HeaderText = "Role";
             sqlConnection1.Close();
-            if (CurrentUserData.UserRole == "Администратор")
+            if (SavedUserData.UserRole == "Администратор")
             {
                 button3.Enabled = true;
             }
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Text = $" Корнеев Александр Александрович, Логин: {CurrentUserData.UserLogin}, Роль: {CurrentUserData.UserRole}, Список пользователей";
-            sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
+            this.Text = $" Корнеев Александр Александрович, Логин: {SavedUserData.UserLogin}, Роль: {SavedUserData.UserRole}, Список пользователей";
+            sqlConnection1 = new SqlConnection(SavedUserData.ConnectionString);
             sqlConnection1.Open();
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter("SELECT Id, Login, Password, Role FROM Users", sqlConnection1);

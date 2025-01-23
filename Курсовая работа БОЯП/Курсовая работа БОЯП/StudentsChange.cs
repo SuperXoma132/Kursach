@@ -14,7 +14,7 @@ namespace Курсовая_работа_БОЯП
         }
         private void button3_Click(object sender, EventArgs e) // поиск
         {
-            sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
+            sqlConnection1 = new SqlConnection(SavedUserData.ConnectionString);
             sqlConnection1.Open();
             DataTable table = new DataTable();
             string id = id_checker.Text.Trim();
@@ -53,7 +53,7 @@ namespace Курсовая_работа_БОЯП
         }
         private void StudentsChange_Load(object sender, EventArgs e)
         {
-            this.Text = $" Корнеев Александр Александрович, Логин: {CurrentUserData.UserLogin}, Роль: {CurrentUserData.UserRole}, Редактирование студентов";
+            this.Text = $" Корнеев Александр Александрович, Логин: {SavedUserData.UserLogin}, Роль: {SavedUserData.UserRole}, Редактирование студентов";
             Sex.DropDownStyle = ComboBoxStyle.DropDown;
             EducationCost.DropDownStyle = ComboBoxStyle.DropDown;
             Sex.Items.Add("Мужской");
@@ -63,7 +63,7 @@ namespace Курсовая_работа_БОЯП
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
+            sqlConnection1 = new SqlConnection(SavedUserData.ConnectionString);
             sqlConnection1.Open();
             int number;
             if (!(Firstname.Text.IsNullOrEmpty() || LastName.Text.IsNullOrEmpty() || MiddleName.Text.IsNullOrEmpty() ||
@@ -71,7 +71,7 @@ namespace Курсовая_работа_БОЯП
                 (ID.Text.All(char.IsDigit) && (EducationCost.Text == "Бюджетная основа" || EducationCost.Text == "Платная основа")
                 && (Sex.Text == "Женский" || Sex.Text == "Мужской") && dateTimePicker1.Value.Year < 2025 && CreditsCount.Text.All(char.IsDigit)))
             {
-                    sqlConnection1 = new SqlConnection(CurrentUserData.ConnectionString);
+                    sqlConnection1 = new SqlConnection(SavedUserData.ConnectionString);
                     sqlConnection1.Open();
                     SqlCommand updateTable = new SqlCommand($"UPDATE Students SET " +
                         $"FirstName = N'{Firstname.Text}', " +

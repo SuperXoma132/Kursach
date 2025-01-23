@@ -1,6 +1,6 @@
 ﻿namespace Курсовая_работа_БОЯП
 {
-    partial class Sorting
+    partial class DataProcessing
     {
         /// <summary>
         /// Required designer variable.
@@ -51,14 +51,14 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // Sorting
+            // DataProcessing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
-            Name = "Sorting";
+            Name = "DataProcessing";
             Text = "Sorting";
             Load += Sorting_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

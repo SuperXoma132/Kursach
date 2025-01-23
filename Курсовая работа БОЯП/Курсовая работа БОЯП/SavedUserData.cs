@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Курсовая_работа_БОЯП
 {
-    public static class CurrentUserData
+    public static class SavedUserData
     {
         public static string UserRole {  get; set; }
         public static string UserLogin { get; set; }
